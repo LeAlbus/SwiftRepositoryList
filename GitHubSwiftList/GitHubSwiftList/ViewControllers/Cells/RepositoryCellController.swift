@@ -12,12 +12,13 @@ import AlamofireImage
 
 class RepositoryCellController: UITableViewCell{
     
-    @IBOutlet weak var branchesLabel: UILabel!
     @IBOutlet weak var starsLabel: UILabel!
-    @IBOutlet weak var username: UILabel!
+
+    @IBOutlet weak var branchesLabel: UILabel!
     @IBOutlet weak var projectName: UILabel!
-    @IBOutlet weak var projectDesctiption: UILabel!
     @IBOutlet weak var profilePic: UIImageView!
+    @IBOutlet weak var projectDescription: UILabel!
+    @IBOutlet weak var userName: UILabel!
     
     var repoInfo: Repository?
     
@@ -28,9 +29,9 @@ class RepositoryCellController: UITableViewCell{
             self.branchesLabel.text = String(repoInfo!.forksCount)
             self.starsLabel.text = String(repoInfo!.starsCount)
             self.projectName.text = repoInfo?.repoName ?? "Project name"
-            self.projectDesctiption.text = repoInfo?.repoDescription ?? "Repository description"
+            self.projectDescription.text = repoInfo?.repoDescription ?? "Repository description"
             
-            self.username.text = repoInfo?.ownerInfo.userName ?? "Repository Owner"
+            self.userName.text = repoInfo?.ownerInfo.userName ?? "Repository Owner"
             
             let imagePath = repoInfo?.ownerInfo.avatarPath
             let placeholderImage = UIImage(named: "Profile")!
