@@ -23,6 +23,7 @@ struct Repository: Decodable{
     let starsCount: Int
     let repoName: String
     let repoDescription: String
+    let creationDate: String
     let ownerInfo: User
     
     private enum CodingKeys: String, CodingKey{
@@ -30,6 +31,7 @@ struct Repository: Decodable{
         case starsCount = "stargazers_count"
         case repoName = "name"
         case repoDescription = "description"
+        case creationDate = "created_at"
         case ownerInfo = "owner"
     }
 }

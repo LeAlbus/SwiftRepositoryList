@@ -12,6 +12,7 @@ import UIKit
 class RepositoryListController: UITableViewController{
     
     var loadedPages = 1
+    var selectedRepoInfo: Repository?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,9 +42,21 @@ class RepositoryListController: UITableViewController{
         return cell
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == "showRepoInfo" && selectedRepoInfo != nil{
+            
+            let informationView = segue.destination as! RepositoryInfoViewController
+            informationView.setData(selectedRepo: selectedRepoInfo!)
+        }
+    }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath){
         
+        let selectedRepo: Repository = APIManager.sharedInstance.repoList[indexPath.row]
+        self.selectedRepoInfo = selectedRepo
+        
+        self.performSegue(withIdentifier: "showRepoInfo", sender: self)
     }
     
     override func scrollViewDidScroll(_ scrollView: UIScrollView){
