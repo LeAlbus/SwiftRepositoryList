@@ -17,12 +17,16 @@ class RepositoryInfoViewController: UIViewController{
     @IBOutlet weak var repoNameLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var creationDate: UILabel!
-    @IBAction func viewOnBrowser(sender: UIButton){
-        print("Open Browser")
-    }
-    
+ 
     var repoInfo: Repository?
     
+    @IBAction func viewOnBrowser(sender: UIButton){
+        
+        if let url = self.repoInfo?.repoURL{
+            UIApplication.shared.open(URL(string : url)!, options: [:], completionHandler: { (status) in
+            })
+        }
+    }
     
     func setData(selectedRepo: Repository){
         self.repoInfo = selectedRepo

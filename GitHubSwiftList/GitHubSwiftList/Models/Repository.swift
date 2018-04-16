@@ -24,6 +24,7 @@ struct Repository: Decodable{
     let repoName: String
     let repoDescription: String
     let creationDate: String
+    let repoURL: String
     let ownerInfo: User
     
     private enum CodingKeys: String, CodingKey{
@@ -32,6 +33,7 @@ struct Repository: Decodable{
         case repoName = "name"
         case repoDescription = "description"
         case creationDate = "created_at"
+        case repoURL = "html_url"
         case ownerInfo = "owner"
     }
 }
