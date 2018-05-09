@@ -15,7 +15,8 @@ class APIManager{
     var repoList: [Repository] = []
     var isGettingData = false
     
-    func requestRepoList(resultPage: Int = 1, successHandler: @escaping (_ successObject: RepositoryList?) -> ()){
+    func requestRepoList
+        (resultPage: Int = 1, successHandler: @escaping (_ successObject: RepositoryList?) -> ()){
         
         self.isGettingData = true
         
